@@ -27,13 +27,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { selectGenreOrCategory } from '../../redux/features/currentGenreOrCategory';
 
-import { useGetMovieQuery } from '../../redux/services/TMDB';
+import { useGetMovieQuery, useGetRecommendationsQuery } from '../../redux/services/TMDB';
 import useStyles from './styles';
 import genreIcons from '../../assets/genres';
+import { MovieList } from '../../components';
 
 function MovieDetails() {
   const { id } = useParams();
   const { data, isFetching, error } = useGetMovieQuery(id);
+  const { data: recommendations, isFetching: isRecommendationsFetching } =
+    useGetRecommendationsQuery({ list: '/recommendations', movie_id: id });
+  console.log(recommendations);
   const dispatch = useDispatch();
   const classes = useStyles();
   const isMovieFavorited = true;
@@ -125,13 +129,16 @@ function MovieDetails() {
                       md={2}
                       component={Link}
                       to={`/actors/${character.id}`}
-                      style={{ textDecoration: 'none' }}
+                      style={{ textDecoration: 'none', transtion: 'all 5s ease-in-out' }}
                     >
-                      <img
-                        className={classes.castImage}
-                        src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`}
-                        alt={character.name}
-                      />
+                      <Fade in timeout={(i + 1) * 500}>
+                        <img
+                          className={classes.castImage}
+                          src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`}
+                          alt={character.name}
+                        />
+                      </Fade>
+
                       <Typography color="textPrimary">{character?.name}</Typography>
                       <Typography color="textSecondary">
                         {character.character.split('/')[0]}
@@ -196,6 +203,16 @@ function MovieDetails() {
           </div>
         </Grid>
       </Grid>
+      <Box marginTop="5rem" width="100%">
+        <Typography variant="h3" gutterButtom align="center">
+          You might also like
+        </Typography>
+        {recommendations ? (
+          <MovieList movies={recommendations} numberOfMovies={12} />
+        ) : (
+          <Box>Nothing Was Found</Box>
+        )}
+      </Box>
     </Grid>
   );
 }
