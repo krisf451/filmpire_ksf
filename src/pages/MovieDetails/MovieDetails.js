@@ -1,5 +1,5 @@
 /* eslint-disable operator-linebreak */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Modal,
   Typography,
@@ -34,9 +34,12 @@ import { MovieList } from '../../components';
 
 function MovieDetails() {
   const { id } = useParams();
+  const [open, setOpen] = useState(false);
   const { data, isFetching, error } = useGetMovieQuery(id);
-  const { data: recommendations, isFetching: isRecommendationsFetching } =
-    useGetRecommendationsQuery({ list: '/recommendations', movie_id: id });
+  const { data: recommendations } = useGetRecommendationsQuery({
+    list: '/recommendations',
+    movie_id: id,
+  });
   console.log(recommendations);
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -213,6 +216,23 @@ function MovieDetails() {
           <Box>Nothing Was Found</Box>
         )}
       </Box>
+      <Modal
+        closeAfterTransition
+        className={classes.modal}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        {data?.videos?.results?.length > 0 && (
+          <iframe
+            autoPlay
+            className={classes.video}
+            frameBorder="0"
+            title="Trailer"
+            src={`https://www.youtube.com/embed/${data?.videos?.results[0]?.key}`}
+            allow="autoplay"
+          />
+        )}
+      </Modal>
     </Grid>
   );
 }
