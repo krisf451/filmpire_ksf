@@ -1,21 +1,26 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   user: {},
+  isAuthenticated: false,
+  sessionId: '',
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    logout: (state) => {
-      // eslint-disable-next-line no-param-reassign
-      state.user = null;
-      localStorage.clear();
+    setUser: (state, action) => {
+      state.user = action.payload;
+      state.isAuthenticated = true;
+      state.sessionId = localStorage.getItem('session_id');
+
+      localStorage.setItem('accoundId', action.payload.id);
     },
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { setUser } = authSlice.actions;
 
 export default authSlice.reducer;
