@@ -12,7 +12,6 @@ export default makeStyles((theme) => ({
     borderRadius: '20px',
     width: '80%',
     boxShadow: '0.5em 1em 1em rgb(64,64,70)',
-    transition: 'all 3s ease-in-out',
     [theme.breakpoints.down('lg')]: {
       margin: '0 auto',
       width: '100%',

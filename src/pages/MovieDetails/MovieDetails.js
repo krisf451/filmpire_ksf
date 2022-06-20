@@ -8,7 +8,6 @@ import {
   Grid,
   Box,
   CircularProgress,
-  useMediaQuery,
   Rating,
   Fade,
 } from '@mui/material';
@@ -23,8 +22,7 @@ import {
   ArrowBack,
 } from '@mui/icons-material';
 import { Link, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { selectGenreOrCategory } from '../../redux/features/currentGenreOrCategory';
 
 import { useGetMovieQuery, useGetRecommendationsQuery } from '../../redux/services/TMDB';
@@ -111,11 +109,11 @@ function MovieDetails() {
             </Link>
           ))}
         </Grid>
-        <Typography variant="h5" gutterBottom style={{ marginTop: '10px' }}>
+        <Typography variant="h5" style={{ marginTop: '10px' }}>
           Overview
         </Typography>
         <Typography style={{ marginBottom: '2rem' }}>{data?.overview}</Typography>
-        <Typography variant="h5" gutterBottom style={{ marginTop: '10px' }}>
+        <Typography variant="h5" style={{ marginTop: '10px' }}>
           Top Cast
         </Typography>
         <Grid item container spacing={2}>
