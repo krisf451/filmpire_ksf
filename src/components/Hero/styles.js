@@ -8,14 +8,10 @@ export default makeStyles((theme) => ({
     marginBottom: '20px',
   },
   heroImage: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    height: '590px',
+    height: '100%',
     width: '100%',
-    opacity: 0.4,
     objectFit: 'cover',
-    backgroundPosition: 'center',
+    opacity: 0.5,
   },
   bgGradient: {
     position: 'absolute',
@@ -47,7 +43,7 @@ export default makeStyles((theme) => ({
     padding: '40px',
     textAlign: 'center',
 
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       width: '100%',
       fontSize: '1rem',
     },

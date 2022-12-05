@@ -1,7 +1,11 @@
+
 import useStyles from './styles';
+import { useThemeContext } from '../../utils/ToggleColorMode';
 
 function Hero({ movie }) {
   const classes = useStyles();
+  const { mode } = useThemeContext();
+  console.log(mode);
   console.log(movie);
   return (
     <div

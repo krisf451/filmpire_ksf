@@ -11,11 +11,13 @@ export default makeStyles((theme) => ({
   poster: {
     maxHeight: '650px',
     borderRadius: '20px',
-    width: '100%',
+    width: '90%',
     marginBottom: '30px',
     boxShadow: '0.5em 1em 1em rgb(64,64,70)',
     [theme.breakpoints.down('lg')]: {
-      width: '100%',
+      width: '90%',
+      margin: '0 auto',
+      maxWidth: '550px',
       height: '450px',
       marginBottom: '30px',
     },
