@@ -15,6 +15,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'no-unused-vars': 0,
     'no-console': 0,
     'react/react-in-jsx-scope': 0,
     'import/extensions': 0,

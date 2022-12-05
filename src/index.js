@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import App from './App';
+import './index.css';
 import { store } from './redux/store';
 
 const theme = createTheme({});

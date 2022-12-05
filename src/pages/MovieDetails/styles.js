@@ -9,11 +9,12 @@ export default makeStyles((theme) => ({
     flexWrap: 'wrap',
   },
   poster: {
+    maxHeight: '650px',
     borderRadius: '20px',
-    width: '80%',
+    width: '100%',
+    marginBottom: '30px',
     boxShadow: '0.5em 1em 1em rgb(64,64,70)',
     [theme.breakpoints.down('lg')]: {
-      margin: '0 auto',
       width: '100%',
       height: '450px',
       marginBottom: '30px',

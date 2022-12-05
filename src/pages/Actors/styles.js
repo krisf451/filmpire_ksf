@@ -9,7 +9,8 @@ export default makeStyles(() => ({
   },
   actorPoster: {
     borderRadius: '20px',
-    width: '80%',
+    objectFit: 'cover',
+    width: '350px',
     height: '450px',
     marginBottom: '30px',
     boxShadow: '0.5em 1em 1em rgb(64,64,70)',
@@ -18,5 +19,11 @@ export default makeStyles(() => ({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
+  },
+  image: {
+    maxWidth: '90%',
+    borderRadius: '20px',
+    objectFit: 'cover',
+    boxShadow: '0.5em 0.5em 1em rgb(64,64,70)',
   },
 }));

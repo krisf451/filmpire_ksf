@@ -21,7 +21,7 @@ import {
   Remove,
   ArrowBack,
 } from '@mui/icons-material';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { selectGenreOrCategory } from '../../redux/features/currentGenreOrCategory';
 
@@ -32,6 +32,7 @@ import { MovieList } from '../../components';
 
 function MovieDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const { data, isFetching, error } = useGetMovieQuery(id);
   const { data: recommendations } = useGetRecommendationsQuery({
@@ -192,7 +193,7 @@ function MovieDetails() {
                   <Typography
                     style={{ textDecoration: 'none' }}
                     component={Link}
-                    to="/"
+                    onClick={() => navigate(-1)}
                     color="inherit"
                     variant="subtitle2"
                   >
@@ -205,7 +206,7 @@ function MovieDetails() {
         </Grid>
       </Grid>
       <Box marginTop="5rem" width="100%">
-        <Typography variant="h3" gutterButtom align="center">
+        <Typography variant="h3" gutterBottom align="center">
           You might also like
         </Typography>
         {recommendations ? (
